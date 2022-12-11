@@ -16,7 +16,7 @@ const App: Component = () => {
   window.setInterval(() => {
     const currentTime = new Date().getTime();
       updateTime((currentTime - startTime)/1000);
-  },250)
+  },50)
   return (
       <div >
         <Header />
