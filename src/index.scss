@@ -1,0 +1,57 @@
+@import "scss/variables.scss";
+@import "scss/fonts";
+@import "scss/modules/modules";
+
+.mainContainer {
+  scroll-snap-type: y mandatory;
+  position: fixed;
+  top: 13vh;
+  height: 77vh;
+  width: 100%;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+section{
+  scroll-snap-align: start;
+  height: 77vh;
+  & > .container{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .row{
+    row-gap: 100px;
+  }
+  &:nth-child(6n-5){
+    background: $red;
+  }
+  &:nth-child(6n-4){
+  background: $orange;
+  }
+  &:nth-child(6n-3){
+    background: $yellow;
+  }
+  &:nth-child(6n-2){
+    background: $green;
+  }
+  &:nth-child(6n-1){
+    background: $blue;
+  }
+  &:nth-child(6n){
+    background: $purple;
+  }
+
+}
+$red: #E76F51;
+$orange: #F4A261;
+$yellow: #E9C46A;
+$green: #2A9D8F;
+$blue:#68C0E8;
+$purple: #9D2A8E;
+
+
+
+@import "scss/bootstrap";
+@import "scss/typography";

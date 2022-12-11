@@ -1,0 +1,6 @@
+1 Year = 31,536,000 seconds ((24 x 60 x 60) x 365)
+
+example 15 billion in one year
+15000000000÷31536000 = 475,646879756
+
+475,646879756 = per second

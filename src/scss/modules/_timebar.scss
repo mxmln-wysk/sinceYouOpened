@@ -1,0 +1,11 @@
+.timebar{
+  position: fixed;
+  left:0;
+  bottom: 0;
+  height: 10vh;
+  background: $surface-black-2;
+  color: $text-white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

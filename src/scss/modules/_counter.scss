@@ -1,0 +1,12 @@
+.counterItem{
+  span{
+    display: block;
+    text-align: center;
+  }
+  &.single{
+    min-height: 18vh;
+  }
+  &.full{
+    width: 100%;
+  }
+}
