@@ -53,12 +53,11 @@ const App: Component = () => {
   })
   const handleScroll = () => {
     const position = main.scrollLeft;
-
-    if(position/window.innerWidth % 1 == 0){
+    if((position/window.innerWidth - Math.floor(position/window.innerWidth)) < 0.01){
       setTimeout(() => {
         console.log('scroll', main.scrollLeft, position)
         if (main.scrollLeft !== position) return
-        setPage(position/window.innerWidth)
+        setPage(Math.floor(position/window.innerWidth))
         console.log(main.scrollLeft / window.innerWidth, 'scroll')
       },100)
     }
