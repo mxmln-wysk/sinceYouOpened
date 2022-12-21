@@ -1,8 +1,17 @@
+import Footer from "../components/Footer";
+
 const About = () => {
     return(
-        <div>
-            About
-        </div>
+      <div class="pageContainer pageContainer3">
+        <section class="container-fluid">
+          <div class="container">
+            <div class="row row-cols-2">
+              About
+            </div>
+          </div>
+        </section>
+        <Footer />
+      </div>
     )
 }
 

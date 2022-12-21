@@ -1,15 +1,43 @@
 @import "scss/variables.scss";
 @import "scss/fonts";
 @import "scss/modules/modules";
-
-.mainContainer {
-  scroll-snap-type: y mandatory;
+*::-webkit-scrollbar {
+  display: none;
+}
+#main{
+  width: 100vw;
+  scroll-snap-type: x mandatory;
   position: fixed;
   top: 13vh;
+  overflow-y: scroll;
+}
+.mainContainer{
+  width: 400vw;
+  display: flex;
+  flex-direction: row;
+  > *{
+    width: 100vw !important;
+  }
+}
+
+.pageContainer {
+  scroll-snap-type: y mandatory;
+  position: relative;
   height: 77vh;
   width: 100%;
   overflow-y: scroll;
   scroll-behavior: smooth;
+  scroll-snap-align: center;
+}
+
+.pageBTN{
+  position: fixed;
+  top: 50%;
+  left: 0;
+  &.next{
+    right: 0;
+    left: auto;
+  }
 }
 
 section{

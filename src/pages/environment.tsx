@@ -1,18 +1,20 @@
+import {useTime} from "../context";
 import climate from '../data/climate'
 import BasicCounter from "../components/BasicCounter";
-import Footer from "../components/Footer";
 import counterPageProps from "../interfaces/counterPageProps";
+import Footer from "../components/Footer";
 
-const Home = (props:counterPageProps) => {
+const Environment = (props:counterPageProps) => {
+	// @ts-ignore
 	const climateOne  = climate[0]
 	const climateTwo  = climate[1]
 	const climateThree  = climate[2]
 	return(
-		<div class="pageContainer pageContainer0">
+		<div class="pageContainer pageContainer1">
 			<section class="container-fluid">
 				<div class="container">
 					<div class="row row-cols-2">
-						Welcome
+						<BasicCounter object={climateOne} time={props.time} type="full"/>
 					</div>
 				</div>
 			</section>
@@ -36,9 +38,9 @@ const Home = (props:counterPageProps) => {
 					</div>
 				</div>
 			</section>
-			<Footer />
-		</ div>
+			<Footer/>
+		</div>
 	)
 }
 
-export default Home;
+export default Environment;
