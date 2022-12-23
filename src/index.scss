@@ -40,8 +40,12 @@
   }
 }
 
+.pageContainer section:last-of-type {
+  padding-top: 2px;
+  height: calc(77vh + 2px);
+}
 section{
-  scroll-snap-align: start;
+  scroll-snap-align: center;
   height: 77vh;
   & > .container{
     height: 100%;

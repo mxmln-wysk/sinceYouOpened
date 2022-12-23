@@ -3,17 +3,17 @@
 }
 
 h1, .h1{
-  font-size: 80px;
+  @include font-size(80px);
   line-height: 80px;
   letter-spacing: 5px;
 }
 h2, .h2{
-  font-size: 60px;
+  @include font-size(60px);
   line-height: 60px;
   letter-spacing: -0.5px;
 }
 h3, .h3{
-  font-size: 48px;
+  @include font-size(48px);
   line-height: 48px;
   letter-spacing: -0.5px;
 }
