@@ -1,0 +1,58 @@
+button.arrow, button.scrollDown {
+  -webkit-appearance: none;
+  background: transparent;
+  border: 0;
+  outline:0;
+  &:disabled.arrow{
+    cursor: unset !important;
+    polyline{
+      stroke-width: 1 !important;
+      opacity: 0.6;
+    }
+  }
+}
+
+svg {
+  padding: 5px;
+}
+
+.arrow,.scrollDown {
+  cursor: pointer;
+  width: 70px;
+  height: 90px;
+}
+
+.arrow:hover polyline{
+  stroke-width: 4;
+  opacity: 0.8;
+
+}
+.arrow:active polyline {
+  stroke-width: 7;
+  transition: all 50ms ease-in-out;
+  opacity: 1;
+}
+.arrow polyline {
+  transition: all 250ms ease-in-out;
+  opacity: 0.7;
+}
+
+.scrollDown{
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) rotate(90deg);
+  animation: scrollArr 2s infinite;
+}
+
+@keyframes scrollArr {
+  0%, 20%, 50%, 80%, 100% {
+    bottom: 0;
+  }
+  40% {
+    bottom:-20px;
+  }
+  60% {
+    bottom:-10px;
+  }
+}

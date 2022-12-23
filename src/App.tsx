@@ -1,5 +1,5 @@
 import type { Component } from 'solid-js';
-import {createEffect, createSignal, lazy, onMount} from "solid-js";
+import {createEffect, createSignal, onMount} from "solid-js";
 import {useTime} from "./context";
 
 import Home from "./pages/home";
@@ -7,8 +7,8 @@ import TimeBar from "./components/TimeBar";
 import Header from "./components/Header";
 import Environment from "./pages/environment";
 import {useLocation} from "@solidjs/router";
-const Contact = lazy(() => import("./pages/contact"));
-const About = lazy(() => import("./pages/about"));
+import Contact from "./pages/contact";
+import About from "./pages/about";
 
 const navItems = ["", "environment", "contact", "about"]
 const App: Component = () => {
@@ -44,7 +44,7 @@ const App: Component = () => {
   })
 
   createEffect(() => {
-    console.log(page(), 'page changes', page() * window.innerWidth)
+    console.log(page(), 'page changes', page() * window.innerWidth, navItems.length)
     main.scrollTo({
       left:page() * window.innerWidth,
       top: 0,
@@ -81,11 +81,19 @@ const App: Component = () => {
             <About />
           </div>
         </main>
-        <div class="pageBTN" onClick={() => scrollTest(page() -1)}>
-          prev
+        <div class="pageBTN">
+          <button class="arrow left" disabled={page() == 0}  onClick={() => scrollTest(page() -1)}>
+            <svg width="60px" height="80px" viewBox="0 0 50 80">
+              <polyline fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" points="45.63,75.8 0.375,38.087 45.63,0.375 "/>
+            </svg>
+          </button>
         </div>
-        <div class="pageBTN next"  onClick={() => scrollTest(page() + 1)} >
-          next
+        <div class="pageBTN next">
+          <button class="arrow right" disabled={navItems.length - 1 == page()} onClick={() => scrollTest(page() + 1)} >
+            <svg xmlns="http://www.w3.org/2000/svg" width="60px" height="80px" viewBox="0 0 50 80">
+              <polyline fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" points="0.375,0.375 45.63,38.087 0.375,75.8 "/>
+            </svg>
+          </button>
         </div>
         <TimeBar currentTime={Time()} />
       </div>
