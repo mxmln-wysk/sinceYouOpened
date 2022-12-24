@@ -1,10 +1,10 @@
-import {A, useNavigate} from "@solidjs/router";
-const navItems = ["", "environment", "contact", "about"]
-
+import {useLocation, useNavigate} from "@solidjs/router";
+import {navItems} from "../App";
 const Footer = () => {
 	const scrollTop = (path:string) => {
 		navigate(path)
 		const page = navItems.indexOf(path.slice(1));
+		console.log(page)
 		setTimeout(() => {
 			const element = document.querySelector(".pageContainer"+page);
 			console.log( 'page in Footer changes',element)
@@ -12,27 +12,59 @@ const Footer = () => {
 		},10)
 	}
 	const navigate = useNavigate();
+	const location = useLocation();
 
+	const top = () => {
+		console.log(navItems.indexOf(location.pathname.slice(1)))
+		const currentPageDoc = document.querySelector('.pageContainer'+ navItems.indexOf(location.pathname.slice(1)));
+		currentPageDoc && currentPageDoc.scrollTo({
+			top: 100,
+			behavior: 'smooth'
+		});
+	}
 	return(
 		<section class="container-fluid">
 			<footer>
 				<div class="container">
-					<div class="row row-cols-2">
+					<div class="row">
 						<div class="col">
+							<h2>Navigation</h2>
 							<ul>
 								<li>
-									<a onClick={() => scrollTop('/')} >Home</a>
+									<h3>
+										<a onClick={() => scrollTop('/')} >Home</a>
+									</h3>
 								</li>
 								<li>
-									<a onClick={() => scrollTop('/environment')}>Environment</a>
+									<h3>
+										<a onClick={() => scrollTop('/environment')}>Environment</a>
+									</h3>
 								</li>
 								<li>
-									<a onClick={() => scrollTop('/contact')}>Contact</a>
+									<h3>
+										<a onClick={() => scrollTop('/death-and-life')}>Death and Life</a>
+									</h3>
 								</li>
 								<li>
-									<a onClick={() => scrollTop('/about')} >About</a>
+									<h3>
+										<a onClick={() => scrollTop('/contact')}>Contact</a>
+									</h3>
+								</li>
+								<li>
+									<h3>
+										<a onClick={() => scrollTop('/about')} >About</a>
+									</h3>
 								</li>
 							</ul>
+						</div>
+						<div class="col">
+							<h3>
+								<li>
+									<a onClick={() => top()}>
+										To the Top
+									</a>
+								</li>
+							</h3>
 						</div>
 					</div>
 				</div>

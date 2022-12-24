@@ -6,13 +6,15 @@ import Home from "./pages/home";
 import TimeBar from "./components/TimeBar";
 import Header from "./components/Header";
 import Environment from "./pages/environment";
-import {useLocation} from "@solidjs/router";
+import {useLocation, useNavigate} from "@solidjs/router";
 import Contact from "./pages/contact";
 import About from "./pages/about";
+import DeathAndLife from "./pages/death-and-life";
 
-const navItems = ["", "environment", "contact", "about"]
+export const navItems = ["", "environment", "death-and-life", "contact", "about"]
 const App: Component = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   onMount(() => {
     if (window.innerWidth < 1000){
@@ -20,7 +22,6 @@ const App: Component = () => {
       const root = document.querySelector(':root')
       root && root.style.setProperty('--pageHeight', innerHeight + "px");
     }
-
 
     setTimeout(() => {
       setPage(navItems.indexOf(location.pathname.slice(1)));
@@ -42,6 +43,7 @@ const App: Component = () => {
   const scrollTest = (number:number) => {
     if (number < 0 && page() == 0) return
       setPage(number)
+      navigate('/' + navItems[number])
   }
 
   createEffect(() => {
@@ -82,10 +84,11 @@ const App: Component = () => {
         <Header />
         <main id={"main"} ref={main}>
           <div class={"mainContainer"}>
-            <Home time={page() == 0 ? Time() : 0} />
-            <Environment time={page() == 1 ? Time() : 0} />
-            <Contact/>
-            <About />
+            <Home time={page() == 0 ? Time() : 0} page={0}/>
+            <Environment time={page() == 1 ? Time() : 0} page={1}/>
+            <DeathAndLife time={page() == 2 ? Time() : 0} page={2} />
+            <Contact time={1} page={3}/>
+            <About time={1} page={4}/>
           </div>
         </main>y
         <div class="pageBTN">

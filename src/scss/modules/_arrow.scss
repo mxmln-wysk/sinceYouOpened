@@ -43,6 +43,7 @@ svg {
   left: 50%;
   transform: translate(-50%,0) rotate(90deg);
   animation: scrollArr 2s infinite;
+  cursor: default !important;
   @include media-breakpoint-down(md) {
     bottom: 50px;
   }

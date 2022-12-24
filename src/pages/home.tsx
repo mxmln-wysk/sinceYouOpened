@@ -5,7 +5,7 @@ import TitleSection from "../components/TitleSection";
 
 const Home = (props:counterPageProps) => {
 	return(
-		<div class="pageContainer pageContainer0">
+		<div class={"pageContainer pageContainer" + props.page}>
 			<TitleSection>
 				<div class="row">
 					<h2>
