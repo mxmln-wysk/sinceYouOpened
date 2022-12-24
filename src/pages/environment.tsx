@@ -1,8 +1,8 @@
-import {useTime} from "../context";
 import climate from '../data/climate'
 import BasicCounter from "../components/BasicCounter";
 import counterPageProps from "../interfaces/counterPageProps";
 import Footer from "../components/Footer";
+import TitleSection from "../components/TitleSection";
 
 const Environment = (props:counterPageProps) => {
 	// @ts-ignore
@@ -11,6 +11,19 @@ const Environment = (props:counterPageProps) => {
 	const climateThree  = climate[2]
 	return(
 		<div class="pageContainer pageContainer1">
+			<TitleSection>
+				<div class="row">
+					<h2>
+						It's all about
+					</h2>
+				</div>
+				<div class="row">
+					<h1>
+						Environment
+					</h1>
+				</div>
+
+			</TitleSection>
 			<section class="container-fluid">
 				<div class="container">
 					<div class="row row-cols-2">

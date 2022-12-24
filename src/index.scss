@@ -1,6 +1,21 @@
 @import "scss/variables.scss";
 @import "scss/fonts";
+
+$red: #E76F51;
+$orange: #F4A261;
+$yellow: #E9C46A;
+$green: #2A9D8F;
+$blue:#68C0E8;
+$purple: #9D2A8E;
+:root {
+  --pageHeight: 77vh;
+}
+
+
+@import "scss/bootstrap";
+@import "scss/typography";
 @import "scss/modules/modules";
+
 *::-webkit-scrollbar {
   display: none;
 }
@@ -23,7 +38,7 @@
 .pageContainer {
   scroll-snap-type: y mandatory;
   position: relative;
-  height: 77vh;
+  height: var(--pageHeight);
   width: 100%;
   overflow-y: scroll;
   scroll-behavior: smooth;
@@ -39,20 +54,34 @@
     right: 0;
     left: auto;
   }
+  @include media-breakpoint-down(md){
+    display: none;
+  }
 }
 
 .pageContainer section:last-of-type {
   padding-top: 2px;
-  height: calc(77vh + 2px);
+  height: calc(var(--pageHeight) + 2px);
 }
 section{
   scroll-snap-align: center;
-  height: 77vh;
+  height: var(--pageHeight);
   & > .container{
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+  @include media-breakpoint-down(md){
+    min-height: -webkit-fill-available;
+    height: unset;
+    position: relative;
+    & > .container{
+      position: absolute;
+      left: 0;
+    }
   }
   .row{
     row-gap: 100px;
@@ -75,16 +104,15 @@ section{
   &:nth-child(6n){
     background: $purple;
   }
-
 }
-$red: #E76F51;
-$orange: #F4A261;
-$yellow: #E9C46A;
-$green: #2A9D8F;
-$blue:#68C0E8;
-$purple: #9D2A8E;
 
-
-
-@import "scss/bootstrap";
-@import "scss/typography";
+.desktop{
+  @include media-breakpoint-down(md){
+    display: none;
+  }
+}
+.mobile{
+  @include media-breakpoint-up(md){
+    display: none;
+  }
+}

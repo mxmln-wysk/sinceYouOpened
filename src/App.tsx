@@ -15,6 +15,13 @@ const App: Component = () => {
   const location = useLocation();
 
   onMount(() => {
+    if (window.innerWidth < 1000){
+      const innerHeight = window.innerHeight * 0.77;
+      const root = document.querySelector(':root')
+      root && root.style.setProperty('--pageHeight', innerHeight + "px");
+    }
+
+
     setTimeout(() => {
       setPage(navItems.indexOf(location.pathname.slice(1)));
       console.log('navChanged',location.pathname )
@@ -80,7 +87,7 @@ const App: Component = () => {
             <Contact/>
             <About />
           </div>
-        </main>
+        </main>y
         <div class="pageBTN">
           <button class="arrow left" disabled={page() == 0}  onClick={() => scrollTest(page() -1)}>
             <svg width="60px" height="80px" viewBox="0 0 50 80">
