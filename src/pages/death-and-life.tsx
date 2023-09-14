@@ -24,9 +24,6 @@ const Environment = (props:counterPageProps) => {
 					<div class="row row-cols-2">
 						<BasicCounter object={deathAndLife[0]} time={props.time} type="single"/>
 						<BasicCounter object={deathAndLife[1]} time={props.time} type="single"/>
-						{
-							// <BasicCounter object={deathAndLife[2]} time={props.time} type="full"/>
-						}
 					</div>
 				</div>
 			</section>
@@ -40,7 +37,8 @@ const Environment = (props:counterPageProps) => {
 			<section class="container-fluid">
 				<div class="container">
 					<div class="row row-cols-2">
-						<BasicCounter object={deathAndLife[4]} time={props.time} type="full"/>
+						<BasicCounter object={deathAndLife[4]} time={props.time} type="single"/>
+						<BasicCounter object={deathAndLife[5]} time={props.time} type="single"/>
 					</div>
 				</div>
 			</section>

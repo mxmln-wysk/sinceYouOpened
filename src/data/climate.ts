@@ -53,6 +53,27 @@ const climate = [
         link: 'https://ourworldindata.org/meat-production#number-of-animals-slaughtered#:~:text=%20an%20estimated%2069%20billion%20chickens,killed%20for%20meat%20production',
         unit: '',
         fractionDigits: 0
+    },
+    {
+        text: ' Ice is lost(melted) by Greenland and Antarctica',
+        multiplier:13318,
+        link: 'https://climate.nasa.gov/vital-signs/ice-sheets/#:~:text=Antarctica,rise',
+        unit: 'tonnes',
+        fractionDigits: 0
+    },
+    {
+        text: ' of CO² is emmited by the top 1% based on wealth per Person',
+        multiplier:1.331811,
+        link: 'https://www.statista.com/chart/26904/estimated-global-co2-emission-share-by-income-groups/#:~:text=On%20average,%20one%20percent',
+        unit: 'gram',
+        fractionDigits: 2
+    },
+    {
+        text: ' of CO² is emmited by the lower 50% based on wealth per Person',
+        multiplier:0.031709792,
+        link: 'https://www.statista.com/chart/26904/estimated-global-co2-emission-share-by-income-groups/#:~:text=On%20average,%20one%20percent',
+        unit: 'gram',
+        fractionDigits: 2
     }
 
 ]
