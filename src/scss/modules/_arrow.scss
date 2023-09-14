@@ -6,8 +6,7 @@ button.arrow, button.scrollDown {
   &:disabled.arrow{
     cursor: unset !important;
     polyline{
-      stroke-width: 1 !important;
-      opacity: 0.6;
+      opacity: 0;
     }
   }
 }
@@ -43,7 +42,6 @@ svg {
   left: 50%;
   transform: translate(-50%,0) rotate(90deg);
   animation: scrollArr 2s infinite;
-  cursor: default !important;
   @include media-breakpoint-down(md) {
     bottom: 50px;
   }
