@@ -1,9 +1,10 @@
 import {useLocation, useNavigate} from "@solidjs/router";
-import {navItems} from "../App";
+import NAV_ITEMS from "../data/navItems";
+import top from "../helper/top";
 const Footer = () => {
 	const scrollTop = (path:string) => {
 		navigate(path)
-		const page = navItems.indexOf(path.slice(1));
+		const page = NAV_ITEMS.indexOf(path.slice(1));
 		console.log(page)
 		setTimeout(() => {
 			const element = document.querySelector(".pageContainer"+page);
@@ -14,14 +15,6 @@ const Footer = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
 
-	const top = () => {
-		console.log(navItems.indexOf(location.pathname.slice(1)))
-		const currentPageDoc = document.querySelector('.pageContainer'+ navItems.indexOf(location.pathname.slice(1)));
-		currentPageDoc && currentPageDoc.scrollTo({
-			top: 100,
-			behavior: 'smooth'
-		});
-	}
 	return(
 		<section class="container-fluid">
 			<footer>
