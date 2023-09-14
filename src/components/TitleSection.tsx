@@ -1,9 +1,8 @@
 import {ParentComponent} from "solid-js/types/server/rendering";
-import {navItems} from "../App";
-
+import NAV_ITEMS from "../data/navItems";
 const TitleSection:ParentComponent = (props) => {
 	const scrollDown = () => {
-		const secondPageElement = document.querySelector('.pageContainer'+ navItems.indexOf(location.pathname.slice(1)) + ' > section:nth-child(2)');
+		const secondPageElement = document.querySelector('.pageContainer'+ NAV_ITEMS.indexOf(location.pathname.slice(1)) + ' > section:nth-child(2)');
 		secondPageElement && secondPageElement.scrollIntoView({
 			behavior: 'smooth'
 		});

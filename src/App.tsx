@@ -11,22 +11,15 @@ import Contact from "./pages/contact";
 import About from "./pages/about";
 import DeathAndLife from "./pages/death-and-life";
 
-export const navItems = ["", "environment", "death-and-life", "contact", "about"]
+import top from './helper/top';
+
+import NAV_ITEMS from './data/navItems';
 const App: Component = () => {
   const location = useLocation();
   const navigate = useNavigate();
-
+  const [page, setPage] = createSignal<number>(0 );
   onMount(() => {
-    if (window.innerWidth < 1000){
-      const innerHeight = window.innerHeight * 0.77;
-      const root = document.querySelector(':root')
-      root && root.style.setProperty('--pageHeight', innerHeight + "px");
-    }
-
-    setTimeout(() => {
-      setPage(navItems.indexOf(location.pathname.slice(1)));
-      console.log('navChanged',location.pathname )
-    },500)
+    setPage(NAV_ITEMS.indexOf(location.pathname.slice(1)));
   })
   //time Logic
   // @ts-ignore
@@ -38,37 +31,26 @@ const App: Component = () => {
   },50)
 
   let main: HTMLElement;
-  const [page, setPage] = createSignal<number>(0 );
-
-  const scrollTest = (number:number) => {
-    if (number < 0 && page() == 0) return
-      setPage(number)
-      navigate('/' + navItems[number])
-  }
-
+  //effect gets called every page change
   createEffect(() => {
-    setTimeout(() => {
-
-    },100)
+    const currentPage = document.querySelector('.pageContainer'+page()+ ' section');
+    currentPage?.scrollIntoView({behavior: 'smooth'})
   })
-
-  createEffect(() => {
-    console.log(page(), 'page changes', page() * window.innerWidth, navItems.length)
-    main.scrollTo({
-      left:page() * window.innerWidth,
-      top: 0,
-      behavior: "smooth"
-    })
-  })
+  
+  //handle Scrolling sidways
   const handleScroll = () => {
     const position = main.scrollLeft;
     if((position/window.innerWidth - Math.floor(position/window.innerWidth)) < 0.01){
       setTimeout(() => {
-        console.log('scroll', main.scrollLeft, position)
+        //only fires one time after scrolling
         if (main.scrollLeft !== position) return
         setPage(Math.floor(position/window.innerWidth))
-        console.log(main.scrollLeft / window.innerWidth, 'scroll')
+        navigate('/' + NAV_ITEMS[page()]);
+        setTimeout(() => {
+          top()
+        }, 100)
       },100)
+
     }
   };
 
@@ -92,14 +74,14 @@ const App: Component = () => {
           </div>
         </main>y
         <div class="pageBTN">
-          <button class="arrow left" disabled={page() == 0}  onClick={() => scrollTest(page() -1)}>
+          <button class="arrow left" disabled={page() == 0}  onClick={() => setPage(page() -1)}>
             <svg width="60px" height="80px" viewBox="0 0 50 80">
               <polyline fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" points="45.63,75.8 0.375,38.087 45.63,0.375 "/>
             </svg>
           </button>
         </div>
         <div class="pageBTN next">
-          <button class="arrow right" disabled={navItems.length - 1 == page()} onClick={() => scrollTest(page() + 1)} >
+          <button class="arrow right" disabled={NAV_ITEMS.length - 1 == page()} onClick={() => setPage(page() + 1)} >
             <svg xmlns="http://www.w3.org/2000/svg" width="60px" height="80px" viewBox="0 0 50 80">
               <polyline fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" points="0.375,0.375 45.63,38.087 0.375,75.8 "/>
             </svg>
