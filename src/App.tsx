@@ -48,7 +48,7 @@ const App: Component = () => {
         navigate('/' + NAV_ITEMS[page()]);
         setTimeout(() => {
           top()
-        }, 100)
+        }, 20)
       },100)
 
     }
