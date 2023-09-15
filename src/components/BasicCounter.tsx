@@ -1,5 +1,7 @@
 import reformatNumber from "../helper/reformatNumber";
 
+import { useSearchParams } from '@solidjs/router';
+
 interface BasicCounterProps {
 	object:{
 		multiplier: number;
@@ -15,6 +17,8 @@ interface BasicCounterProps {
 }
 
 const BasicCounter = (props: BasicCounterProps) => {
+	const [searchParams] = useSearchParams();
+
 	let sizeBig;
 	let sizeSmall;
 	switch (props.size){

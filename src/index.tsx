@@ -5,11 +5,14 @@ import { Router } from "@solidjs/router";
 import './index.scss';
 import App from './App';
 import {TimeProvider} from "./context";
+import { LangProvider } from './langContext';
 
 render(() => (
         <Router>
             <TimeProvider>
-                <App/>
+                <LangProvider>
+                    <App/>
+                </LangProvider>
             </TimeProvider>
         </Router>
     ),

@@ -1,6 +1,7 @@
 import type { Component } from 'solid-js';
 import {createEffect, createSignal, onMount} from "solid-js";
 import {useTime} from "./context";
+import { useLang } from './langContext';
 
 import Home from "./pages/home";
 import TimeBar from "./components/TimeBar";
@@ -10,6 +11,7 @@ import {useLocation, useNavigate} from "@solidjs/router";
 import Contact from "./pages/contact";
 import About from "./pages/about";
 import DeathAndLife from "./pages/death-and-life";
+import { useSearchParams } from '@solidjs/router';
 
 import top from './helper/top';
 
@@ -17,10 +19,30 @@ import NAV_ITEMS from './data/navItems';
 const App: Component = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+   // @ts-ignore
+   const [lang, {updateLang, updateLangParam}] = useLang();
+
   const [page, setPage] = createSignal<number>(0 );
+
   onMount(() => {
+    if(searchParams.lang){
+      updateLang(searchParams.lang);
+    } else{
+      updateLangParam()
+    }
+
     setPage(NAV_ITEMS.indexOf(location.pathname.slice(1)));
   })
+ 
+  const setURL = (urlPath:string) => {
+    navigate(urlPath);
+    setTimeout(() => {
+      updateLangParam();
+    },1)
+  }
+ 
   //time Logic
   // @ts-ignore
   const [Time, {updateTime}] = useTime();
@@ -45,7 +67,7 @@ const App: Component = () => {
         //only fires one time after scrolling
         if (main.scrollLeft !== position) return
         setPage(Math.floor(position/window.innerWidth))
-        navigate('/' + NAV_ITEMS[page()]);
+        setURL('/' + NAV_ITEMS[page()]);
         setTimeout(() => {
           top()
         }, 20)

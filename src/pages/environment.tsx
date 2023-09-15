@@ -4,22 +4,28 @@ import counterPageProps from "../interfaces/counterPageProps";
 import Footer from "../components/Footer";
 import TitleSection from "../components/TitleSection";
 
+import { useLang } from '../langContext';
 const Environment = (props:counterPageProps) => {
 	// @ts-ignore
+	const [lang] = useLang();
+	
 	const climateOne  = climate[0]
 	const climateTwo  = climate[1]
 	const climateThree  = climate[2]
+	
 	return(
 		<div class={"pageContainer pageContainer" + props.page}>
 			<TitleSection>
 				<div class="row">
 					<h2>
-						It's all about
+						{lang() === "de" && "Es geht um"}
+						{lang() === "en" && "It's all about"}
 					</h2>
 				</div>
 				<div class="row">
 					<h1>
-						Environment
+						{lang() === "de" && "die Umwelt"}
+						{lang() === "en" && "Environment"}
 					</h1>
 				</div>
 
