@@ -51,7 +51,7 @@ const Home = (props:counterPageProps) => {
 						}
 					{lang() === "en" && 
 						<h3>
-							Most of the time we are confronted with absurdly high numbers, when we are looking at statistics. High numbers we really can not under stand completly. We dont realise how big these numbers really are, expecially when these statistics are on yearly Basis.
+							Most of the time when we look at statistics we are confronted with absurdly high numbers. High numbers we don't fully understand. We don't know how big these numbers really are, especially if these statistics are based on an annual basis.
 						</h3>
 						}	
 					</div>
@@ -67,7 +67,7 @@ const Home = (props:counterPageProps) => {
 							}
 						{lang() === "en" && 
 							<h3>
-								This Website is all about seeing statistics in Context. Seeing the impact humanity has to this World and experience the these high numbers calculated down to the time you spent on this Website.
+								This website is all about showing statistics in context. To see the impact humanity has on this world and experience these high numbers, calculated based on the time you spent on this website.
 							</h3>
 							}	
 					</div>
@@ -78,13 +78,11 @@ const Home = (props:counterPageProps) => {
 					<div class="row">
 						{lang() === "de" && 
 							<h3>
-								Alle Statistiken haben verlinkte Quellen. Die meisten Statistiken sind grobe Schätzungen und werden von Jahr auf X pro Sekunde gerechnet. Dies hat nicht den Anspruch komplett exakt zu sein, sondern sollen die Zahlen greifbarer machen. 
-							</h3>
+								Alle diese Statistiken haben verlinkte Quellen. Dazu muss nur auf die Zahl geklickt werden. In den meisten Fällen handelt es sich bei diesen Zahlen um Näherungswerte, die von der Jahresbasis auf x pro Sekunde berechnet werden. Sie haben nicht den Anspruch, genau richtig zu sein, sondern sollen Ihnen einen Eindruck davon vermitteln, was in der Welt passiert.							</h3>
 							}
 						{lang() === "en" && 
 							<h3>
-								All of these statistics have linked sources. Most of the Times these numbers are approximate values and calculated from a yearly base to x per second. They have not the requirement to be exactly correct instead they should give you a sense of what is Happening in the world.
-							</h3>
+								All of these statistics have linked sources. All you have to do is click on the number. In most cases, these numbers are approximations calculated from an annual basis to x per second. They don't claim to be exactly right, but are intended to give you a sense of what's happening in the world.							</h3>
 							}	
 					</div>
 				</div>
