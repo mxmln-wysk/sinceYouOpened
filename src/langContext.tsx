@@ -1,11 +1,10 @@
 import {createContext, createSignal, useContext} from "solid-js";
-import { useSearchParams } from "@solidjs/router";
-import { setLocalStorage } from "./helper/localStorage";
+import { setLocalStorage, getLocalStorage } from "./helper/localStorage";
 export const LangContext = createContext();
 
 export function LangProvider(props:any) {
 
-    const localStorageLang = localStorage.getItem('lang');
+    const localStorageLang = getLocalStorage();
     const [lang, setLang] = createSignal<string>(localStorageLang ? localStorageLang : "en");
     const store = [
         lang,

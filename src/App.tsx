@@ -1,7 +1,6 @@
 import type { Component } from 'solid-js';
 import {createEffect, createSignal, onMount} from "solid-js";
 import {useTime} from "./context";
-import { useLang } from './langContext';
 
 import Home from "./pages/home";
 import TimeBar from "./components/TimeBar";
@@ -11,7 +10,6 @@ import {useLocation, useNavigate} from "@solidjs/router";
 import Contact from "./pages/contact";
 import About from "./pages/about";
 import DeathAndLife from "./pages/death-and-life";
-import { useSearchParams } from '@solidjs/router';
 
 import top from './helper/top';
 
@@ -19,15 +17,9 @@ import NAV_ITEMS from './data/navItems';
 const App: Component = () => {
   const location = useLocation();
   const navigate = useNavigate();
-
-   // @ts-ignore
-   const [lang, {updateLang, updateLangParam}] = useLang();
-
   const [page, setPage] = createSignal<number>(0 );
 
   onMount(() => {
-    
-
     setPage(NAV_ITEMS.indexOf(location.pathname.slice(1)));
   })
  
