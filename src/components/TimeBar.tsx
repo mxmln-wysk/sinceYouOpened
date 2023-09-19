@@ -8,7 +8,7 @@ const TimeBar = (props:TimeBarInt) => {
 	return(
 		<div class="timebar container-fluid">
 			<div class="text-center h1">
-				... {formatTime(props.currentTime)} has left.
+				... {formatTime(props.currentTime)} has passed.
 
 			</div>
 		</div>

@@ -14,7 +14,7 @@ const deathAndLife = [
 		fractionDigits: 0
 	},
 	{
-		text: 'Difference between death and life',
+		text: 'difference between death and life',
 		multiplier:2.121,
 		link: 'https://www.who.int/news-room/fact-sheets/detail/the-top-10-causes-of-death#:~:text=Leading%20causes%20of%20death%20globally',
 		unit: '',

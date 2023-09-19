@@ -18,9 +18,15 @@ const App: Component = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [page, setPage] = createSignal<number>(0 );
+
   onMount(() => {
     setPage(NAV_ITEMS.indexOf(location.pathname.slice(1)));
   })
+ 
+  const setURL = (urlPath:string) => {
+    navigate(urlPath);
+  }
+ 
   //time Logic
   // @ts-ignore
   const [Time, {updateTime}] = useTime();
@@ -45,7 +51,7 @@ const App: Component = () => {
         //only fires one time after scrolling
         if (main.scrollLeft !== position) return
         setPage(Math.floor(position/window.innerWidth))
-        navigate('/' + NAV_ITEMS[page()]);
+        setURL('/' + NAV_ITEMS[page()]);
         setTimeout(() => {
           top()
         }, 20)
