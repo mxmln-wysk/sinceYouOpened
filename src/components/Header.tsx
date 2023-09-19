@@ -1,9 +1,6 @@
-import { useLang } from "../langContext";
 import LangSwitch from "./LangSwitch";
 
 const Header = () => {
-   // @ts-ignore
-   const [lang, {updateLang}] = useLang();
 	
 	return(
 		<header class="header container-fluid">

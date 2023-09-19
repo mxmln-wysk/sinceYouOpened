@@ -19,7 +19,6 @@ import NAV_ITEMS from './data/navItems';
 const App: Component = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
 
    // @ts-ignore
    const [lang, {updateLang, updateLangParam}] = useLang();
@@ -27,20 +26,13 @@ const App: Component = () => {
   const [page, setPage] = createSignal<number>(0 );
 
   onMount(() => {
-    if(searchParams.lang){
-      updateLang(searchParams.lang);
-    } else{
-      updateLangParam()
-    }
+    
 
     setPage(NAV_ITEMS.indexOf(location.pathname.slice(1)));
   })
  
   const setURL = (urlPath:string) => {
     navigate(urlPath);
-    setTimeout(() => {
-      updateLangParam();
-    },1)
   }
  
   //time Logic
